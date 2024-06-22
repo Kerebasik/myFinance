@@ -14,8 +14,8 @@ const Content:FC = () =>{
 
     return(
         <main className={classes.main}>
-           <Container>
-
+           <Container maxWidth={"xl"}>
+kkjnkjn
            </Container>
         </main>
     )
