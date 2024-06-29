@@ -1,4 +1,4 @@
-import {AppBar, Toolbar, Typography} from "@mui/material";
+import {AppBar, Chip, Toolbar, Typography} from "@mui/material";
 import {ThemeChanger} from "@/components/Header/components/ThemeChanger.tsx";
 
 
@@ -14,6 +14,7 @@ const Header = () => {
                     >
                         MUI
                     </Typography>
+                    <Chip label={"Data usd"} sx={{marginLeft:"20px",marginRight:"20px"}}/>
                     <ThemeChanger/>
                 </Toolbar>
             </AppBar>

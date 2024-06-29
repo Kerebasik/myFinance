@@ -1,10 +1,11 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import {router} from "./routers";
+import path from "path";
 
-dotenv.config()
+dotenv.config({path : path.resolve("..", ".env")})
 
-const PORT = process.env.PORT
+const PORT = process.env.SERVER_PORT || 5000
 
 const app:Express = express()
 

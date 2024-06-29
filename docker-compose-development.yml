@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  client:
+    container_name: "myFinance-client"
+    restart: always
+    env_file: ".env"
+    build:
+      context: ./client
+      target: dev
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./client/src:/app/client/src
+    ports:
+      - 80:${VITE_CLIENT_PORT}
+    command: yarn run dev
+
+  server:
+    container_name: "myFinance-server"
+    restart: always
+    env_file: ".env"
+    build:
+      context: ./server
+      target: dev
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./server/src:/app/server/src
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    command: yarn run dev
