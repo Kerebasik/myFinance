@@ -18,6 +18,8 @@ services:
   server:
     container_name: "myFinance-server"
     restart: always
+    depends_on:
+      - redis
     env_file: ".env"
     build:
       context: ./server
@@ -27,4 +29,26 @@ services:
       - ./server/src:/app/server/src
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
+    networks:
+      dev_net:
     command: yarn run dev
+
+  redis:
+    image: redis
+    container_name: "redis"
+    env_file: ".env"
+    restart: always
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_cache:/data
+    networks:
+      dev_net:
+
+volumes:
+  redis_cache:
+    driver: local
+
+networks:
+  dev_net:
