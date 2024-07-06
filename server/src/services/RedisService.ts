@@ -8,7 +8,7 @@ const REDIS_USERNAME = process.env.REDIS_UASERNAME
 const REDIS_DATABASES = process.env.REDIS_DATABASES
 
 class RedisService {
-    private redisClient: Redis | null = null
+    private redisClient
     private readonly initRedis = {
         port: Number(REDIS_PORT),
         host: REDIS_HOST,
@@ -16,20 +16,13 @@ class RedisService {
         password: String(REDIS_PASSWORD),
         db: Number(REDIS_DATABASES),
     }
-    private constructor() {
+    constructor() {
         this.redisClient = new Redis(this.initRedis)
     }
 
-    private get Instance(){
-
-    }
-
-    static async getItem(key:string){
-        if(this. === null){
-            this.instance = new RedisService()
-        }
+    async getItem(key:string){
         try{
-            const item = await this.redisClient?.get(key) || ""
+            const item = await this.redisClient.get(key) || ""
             return await JSON.parse(item)
         }catch (e){
             console.error(e)
@@ -39,9 +32,8 @@ class RedisService {
 
     async setItem(key:string,value:object | number | string | Array<string | number | object> ){
         try {
-            const jsonValue =JSON.stringify(value)
-            console.log(jsonValue)
-           // await this.redisClient?.set(key, jsonValue)
+            const jsonValue = JSON.stringify(value)
+            await this.redisClient?.set(key, jsonValue)
         } catch (e){
             console.error(e)
         }

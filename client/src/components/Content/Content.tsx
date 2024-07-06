@@ -1,6 +1,7 @@
 import {FC} from "react";
 import {Container} from "@mui/material";
 import {makeStyles} from '@mui/styles';
+import {MaxWidthContainer} from "@/enums/viewportSize.ts";
 
 // @ts-ignore
 const useStyles = makeStyles(({palette}) => ({
@@ -14,8 +15,8 @@ const Content:FC = () =>{
 
     return(
         <main className={classes.main}>
-           <Container maxWidth={"xl"}>
-kkjnkjn
+           <Container maxWidth={MaxWidthContainer.Large}>
+               fdsdsfdsfdsfds
            </Container>
         </main>
     )

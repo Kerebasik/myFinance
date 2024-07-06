@@ -1,22 +1,32 @@
 import axios, {AxiosInstance, AxiosResponse} from "axios";
-import {CurrencyCodsISO} from "../constants/currencyCodsISO";
+import {CurrencyCodsISO} from "../enums/currencyCodsISO";
 import {CurrencyRate} from "../types/bank";
+import {RedisServiceInstance} from "./RedisService";
+import {cachedDataVersionTag} from "v8";
 
-class BankService{
-    private axiosInstance:AxiosInstance
+class BankService {
+    private axiosInstance: AxiosInstance
+
     constructor() {
         this.axiosInstance = axios.create({
-            baseURL:"https://api.monobank.ua",
+            baseURL: "https://api.monobank.ua",
         })
     }
 
-    async getCurrencyRate(currencyCodeISO: number = CurrencyCodsISO.USD){
+    async getCurrencyRate() {
         try {
-            const responseFromBank:AxiosResponse<[CurrencyRate]> = await this.axiosInstance.get("/bank/currency")
-            const currencyRate =  responseFromBank.data.find((item)=> item.currencyCodeA === currencyCodeISO)
+            const responseFromBank: AxiosResponse<[CurrencyRate]> = await this.axiosInstance.get("/bank/currency")
+            const currencyRate = responseFromBank.data
+            await RedisServiceInstance.setItem(`currencyRate`, currencyRate)
             return currencyRate
-        } catch (e) {
-            console.error(e)
+        } catch (e:any) {
+            if (e.response.status === 429) {
+                try {
+                    return await RedisServiceInstance.getItem(`currencyRate`)
+                } catch (e){
+                    console.error(e)
+                }
+            }
         }
     }
 
