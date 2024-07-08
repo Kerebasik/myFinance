@@ -10,6 +10,9 @@ class BankService {
     constructor() {
         this.axiosInstance = axios.create({
             baseURL: "https://api.monobank.ua",
+            headers:{
+                "X-Token":process.env.MONO_TOKEN
+            }
         })
     }
 
