@@ -1,38 +1,38 @@
 type CurrencyRate =  {
-    currencyCodeA: Number,
-    currencyCodeB: Number,
-    date: Number,
-    rateBuy: Number,
-    rateSell: Number
+    currencyCodeA: number,
+    currencyCodeB: number,
+    date: number,
+    rateBuy: number,
+    rateSell: number
 }
 
 type UserCard = {
-    id: String,
-    sendId: String,
-    currencyCode: Number,
-    cashbackType: String,
-    balance: Number,
-    creditLimit: Number,
-    maskedPan: [String],
-    type: String,
-    iban: String
+    id: string,
+    sendId: string,
+    currencyCode: number,
+    cashbackType: string,
+    balance: number,
+    creditLimit: number,
+    maskedPan: [string],
+    type: string,
+    iban: string
 }
 
 type UserJar = {
-    id: String,
-    sendId: String,
-    title: String,
-    description: String,
-    currencyCode: Number,
-    balance: Number,
-    goal: Number
+    id: string,
+    sendId: string,
+    title: string,
+    description: string,
+    currencyCode: number,
+    balance: number,
+    goal: number
 }
 
 type UserInfo = {
-    clientId: String,
-    name: String,
-    webHookUrl: String,
-    permissions: String,
+    clientId: string,
+    name: string,
+    webHookUrl: string,
+    permissions: string,
     accounts: [UserCard],
     jars: [UserJar]
 }

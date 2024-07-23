@@ -1,30 +1,44 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {currencyRateFetch} from "@/store/bankStore/actions.ts";
+import {currencyRateFetch, userInfoFetch} from "@/store/bankStore/actions.ts";
 import {BankStore} from "@/types/redux/bankStore.ts";
 
-const initialState:BankStore = {
-    currencyRate:[],
-    currencyRateLoading:false,
-    currencyRateError:""
+const initialState: BankStore = {
+    currencyRate: [],
+    currencyRateLoading: false,
+    currencyRateError: "",
+    userData: undefined,
+    userDataLoading: false,
+    userDataError: ""
 }
 
-
 const bankSlice = createSlice({
-    name:"bank",
+    name: "bank",
     initialState,
-    reducers:{},
-    extraReducers:(builder)=>{
-        builder.addCase(currencyRateFetch.pending.type,(state)=>{
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(currencyRateFetch.pending, (state) => {
             state.currencyRateLoading = true
         });
-        builder.addCase(currencyRateFetch.rejected.type, (state, action:any)=>{
+        builder.addCase(currencyRateFetch.rejected, (state, {payload}) => {
             state.currencyRateLoading = false;
-            state.currencyRateError = action.payload;
+            state.currencyRateError = payload;
         })
-        builder.addCase(currencyRateFetch.fulfilled.type,(state, action:any)=>{
+        builder.addCase(currencyRateFetch.fulfilled, (state, {payload}) => {
             state.currencyRateLoading = false;
-            state.currencyRate = action.payload;
+            state.currencyRate = payload;
             state.currencyRateError = "";
+        })
+        builder.addCase(userInfoFetch.pending, (state) => {
+            state.userDataLoading = true;
+        })
+        builder.addCase(userInfoFetch.fulfilled, (state, {payload}) => {
+            state.userData = payload;
+            state.userDataLoading = false;
+            state.userDataError = "";
+        })
+        builder.addCase(userInfoFetch.rejected, (state, {payload})=>{
+            state.currencyRateLoading = false;
+            state.userDataError = payload
         })
     }
 })
