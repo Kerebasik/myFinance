@@ -7,16 +7,31 @@ import {RootState} from "@/store";
 const createWeakMapDraftSafeSelector =
     createDraftSafeSelectorCreator(weakMapMemoize)
 
-const selectSelf = (state:RootState) => state.bankReducers;
+const baseBank = (state:RootState) => state.bankReducers;
 export const currencyRate = createWeakMapDraftSafeSelector(
-    selectSelf,
+    baseBank,
     (state) => state.currencyRate,
 )
 export const currencyRateLoading = createWeakMapDraftSafeSelector(
-    selectSelf,
+    baseBank,
     (state) => state.currencyRateLoading,
 )
 export const currencyRateError = createWeakMapDraftSafeSelector(
-    selectSelf,
+    baseBank,
     (state) => state.currencyRateError,
+)
+
+export const userData = createWeakMapDraftSafeSelector(
+    baseBank,
+    (state)=> state.userData
+)
+
+export const userDataLoading = createWeakMapDraftSafeSelector(
+    baseBank,
+    (state)=> state.userDataLoading
+)
+
+export const userDataError = createWeakMapDraftSafeSelector(
+    baseBank,
+    (state)=> state.userDataError
 )

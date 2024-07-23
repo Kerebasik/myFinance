@@ -8,30 +8,22 @@ const axiosExample = axios.create({
     }
 )
 
-export const currencyRateFetch = createAsyncThunk("bank/currencyRate", async (_, thunkAPI)=>{
+export const currencyRateFetch = createAsyncThunk("bank/currencyRate", async (_, thunkAPI) => {
     try {
         const currencyRate = await axiosExample.get<Array<CurrencyRate>>('/bank/currency-rate')
-        return currencyRate.data.filter((item)=> [CurrencyCodsISO.EUR, CurrencyCodsISO.USD].includes(item.currencyCodeA) && item.currencyCodeB === CurrencyCodsISO.UAH)
-    } catch (e){
-        if (axios.isAxiosError(e)) {
-            const axiosError = e as AxiosError<{message:string}>;
-            return thunkAPI.rejectWithValue(axiosError?.response?.data?.message);
-        } else {
-            return thunkAPI.rejectWithValue('An unknown error occurred');
-        }
+        return currencyRate.data.filter((item) => [CurrencyCodsISO.EUR, CurrencyCodsISO.USD].includes(item.currencyCodeA) && item.currencyCodeB === CurrencyCodsISO.UAH)
+    } catch (e) {
+        const axiosError = e as AxiosError<{ message: string }>;
+        return thunkAPI.rejectWithValue(axiosError?.response?.data?.message);
     }
 })
 
-export const userInfoFetch = createAsyncThunk("bank/userInfo", async (_, thunkAPI)=>{
+export const userInfoFetch = createAsyncThunk("bank/userInfo", async (_, thunkAPI) => {
     try {
         const userInfo = await axiosExample.get<UserInfo>('/bank/user-info')
         return userInfo.data
-    } catch (e){
-        if (axios.isAxiosError(e)) {
-            const axiosError = e as AxiosError<{message:string}>;
-            return thunkAPI.rejectWithValue(axiosError.response?.data.message);
-        } else {
-            return thunkAPI.rejectWithValue('An unknown error occurred');
-        }
+    } catch (e) {
+        const axiosError = e as AxiosError<{ message: string }>;
+        return thunkAPI.rejectWithValue(axiosError.response?.data.message);
     }
 })

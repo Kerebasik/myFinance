@@ -24,12 +24,12 @@ const Content:FC = () =>{
         <main className={classes.main}>
            <Container maxWidth={MaxWidthContainer.Large}>
                <Grid container spacing={2} sx={{mt:0.25}}>
-                   <Grid item xs={6} md={8}>
+                   <Grid item md={9}>
                        <ColumnContainer>
                            xs=6
                        </ColumnContainer>
                    </Grid>
-                   <Grid item xs={6} md={4}>
+                   <Grid item md={3}>
                        <ColumnContainer>
                             <Jars/>
                        </ColumnContainer>
