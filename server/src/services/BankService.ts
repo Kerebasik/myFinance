@@ -1,8 +1,7 @@
 import axios, {AxiosInstance, AxiosResponse} from "axios";
-import {CurrencyCodsISO} from "../enums/currencyCodsISO";
-import {CurrencyRate} from "../types/bank";
+import {CurrencyRate, UserInfo} from "../types/bank";
 import {RedisServiceInstance} from "./RedisService";
-import {cachedDataVersionTag} from "v8";
+import {BankCachedKey} from "../enums/cachedKey";
 
 class BankService {
     private axiosInstance: AxiosInstance
@@ -10,6 +9,9 @@ class BankService {
     constructor() {
         this.axiosInstance = axios.create({
             baseURL: "https://api.monobank.ua",
+            headers:{
+                'X-Token': process.env.MONO_TOKEN
+            }
         })
     }
 
@@ -17,12 +19,29 @@ class BankService {
         try {
             const responseFromBank: AxiosResponse<[CurrencyRate]> = await this.axiosInstance.get("/bank/currency")
             const currencyRate = responseFromBank.data
-            await RedisServiceInstance.setItem(`currencyRate`, currencyRate)
+            await RedisServiceInstance.setItem(BankCachedKey.currencyRate, currencyRate)
             return currencyRate
         } catch (e:any) {
             if (e.response.status === 429) {
                 try {
-                    return await RedisServiceInstance.getItem(`currencyRate`)
+                    return await RedisServiceInstance.getItem(BankCachedKey.currencyRate)
+                } catch (e){
+                    console.error(e)
+                }
+            }
+        }
+    }
+
+    async getUserInfo(){
+        try {
+            const userInfoResponse:AxiosResponse<UserInfo> = await this.axiosInstance.get("/personal/client-info")
+            const userInfo = userInfoResponse.data
+            await RedisServiceInstance.setItem(BankCachedKey.userInfo, userInfo)
+            return userInfo
+        } catch (e:any){
+            if (e.response.status === 429) {
+                try {
+                    return await RedisServiceInstance.getItem(BankCachedKey.userInfo)
                 } catch (e){
                     console.error(e)
                 }

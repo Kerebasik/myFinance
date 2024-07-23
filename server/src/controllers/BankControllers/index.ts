@@ -1,8 +1,2 @@
-import {CurrencyRate} from "./currencyRate";
-
-
-const BankControllers ={
-    CurrencyRate:CurrencyRate
-}
-
-export {BankControllers}
+export * from "./currencyRate";
+export * from "./userInfo";
