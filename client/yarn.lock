@@ -740,6 +740,43 @@
     d3-shape "^3.2.0"
     prop-types "^15.8.1"
 
+"@mui/x-date-pickers-pro@^7.11.0":
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers-pro/-/x-date-pickers-pro-7.11.0.tgz#3570b9c9d8a5cadd01db23539cbd130dab1ea311"
+  integrity sha512-qCHsoNoFgldGxlJE77vL18lhbV7Qg15UFkqCQWV8KbUd5PLrK1kaIf2ddMwLGKJKl4sxSU6rgH/yat95HDdggA==
+  dependencies:
+    "@babel/runtime" "^7.24.8"
+    "@mui/base" "^5.0.0-beta.40"
+    "@mui/system" "^5.16.2"
+    "@mui/utils" "^5.16.2"
+    "@mui/x-date-pickers" "7.11.0"
+    "@mui/x-license" "7.11.0"
+    clsx "^2.1.1"
+    prop-types "^15.8.1"
+    react-transition-group "^4.4.5"
+
+"@mui/x-date-pickers@7.11.0", "@mui/x-date-pickers@^7.11.0":
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-7.11.0.tgz#ac98d9057b733ddec117bc0938f364316eb12b5a"
+  integrity sha512-+zPWs1dwe7J1nZ2iFhTgCae31BLMYMQ2VtQfHxx21Dh6gbBRy/U7YJZg1LdhfQyE093S3e4A5uMZ6PUWdne7iA==
+  dependencies:
+    "@babel/runtime" "^7.24.8"
+    "@mui/base" "^5.0.0-beta.40"
+    "@mui/system" "^5.16.2"
+    "@mui/utils" "^5.16.2"
+    "@types/react-transition-group" "^4.4.10"
+    clsx "^2.1.1"
+    prop-types "^15.8.1"
+    react-transition-group "^4.4.5"
+
+"@mui/x-license@7.11.0":
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/@mui/x-license/-/x-license-7.11.0.tgz#b7566dbb58af40c3b2725c5374124e15663b1362"
+  integrity sha512-4YOfiJ2CDque+nP4MNFU6eNiw2bf9rFGZtN9s0XRWXIaIoLKXICWcMx/PjYpqtLdSGG8eFe+EINX0oxiWC9XSg==
+  dependencies:
+    "@babel/runtime" "^7.24.8"
+    "@mui/utils" "^5.16.2"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -1366,6 +1403,11 @@ d3-shape@^3.2.0:
   integrity sha512-VqKjzBLejbSMT4IgbmVgDjpkYrNWUYJnbCGo874u7MMKIWsILRX+OpX/gTk8MqjpT1A/c6HY2dCA77ZN0lkQ2Q==
   dependencies:
     d3-array "2 - 3"
+
+dayjs@^1.11.12:
+  version "1.11.12"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.12.tgz#5245226cc7f40a15bf52e0b99fd2a04669ccac1d"
+  integrity sha512-Rt2g+nTbLlDWZTwwrIXjy9MeiZmSDI375FvZs72ngxx8PDC6YXOeR3q5LAuPzjZQxhiWdRKac7RKV+YyQYfYIg==
 
 debug@^4.1.0, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4:
   version "4.3.5"

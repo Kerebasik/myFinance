@@ -1,5 +1,4 @@
-import {CurrencyRate, UserInfo} from "@/types/bank.ts";
-
+import {CurrencyRate, UserInfo, UserTransaction} from "@/types/bank.ts";
 
 type BankStore = {
     currencyRate: Array<CurrencyRate>,
@@ -8,6 +7,9 @@ type BankStore = {
     userData: UserInfo | undefined,
     userDataLoading: boolean,
     userDataError: string,
+    transactions: Array<UserTransaction>,
+    transactionsLoading: boolean
+    transactionsError: string
 }
 
 export type {BankStore}

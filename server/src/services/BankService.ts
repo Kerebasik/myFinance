@@ -1,5 +1,5 @@
 import axios, {AxiosInstance, AxiosResponse} from "axios";
-import {CurrencyRate, UserInfo} from "../types/bank";
+import {CurrencyRate, UserInfo, UserTransaction} from "../types/bank";
 import {RedisServiceInstance} from "./RedisService";
 import {BankCachedKey} from "../enums/cachedKey";
 
@@ -38,7 +38,7 @@ class BankService {
             const userInfo = userInfoResponse.data
             await RedisServiceInstance.setItem(BankCachedKey.userInfo, userInfo)
             return userInfo
-        } catch (e:any){
+        } catch (e: any){
             if (e.response.status === 429) {
                 try {
                     return await RedisServiceInstance.getItem(BankCachedKey.userInfo)
@@ -49,6 +49,13 @@ class BankService {
         }
     }
 
+    async getUserTransactions(sendId:string, from:string, to:string){
+        try {
+            const userInfoResponse = await this.axiosInstance.get<[UserTransaction]>(`/personal/statement/${sendId}/${from}/${to}`)
+        } catch (e){
+
+        }
+    }
 }
 
 export {BankService}

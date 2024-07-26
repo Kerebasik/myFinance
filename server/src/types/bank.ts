@@ -37,5 +37,21 @@ type UserInfo = {
     jars: [UserJar]
 }
 
+type UserTransaction = {
+    id: string,
+    time: number,
+    description: string,
+    mcc: number,
+    originalMcc: number,
+    amount: number,
+    operationAmount: number,
+    currencyCode: number,
+    commissionRate: number,
+    cashbackAmount: number,
+    balance: number,
+    hold: boolean,
+    receiptId: string
+}
 
-export type {CurrencyRate, UserInfo, UserCard, UserJar}
+
+export type {CurrencyRate, UserInfo, UserCard, UserJar, UserTransaction}

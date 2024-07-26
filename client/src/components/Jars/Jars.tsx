@@ -1,4 +1,4 @@
-import JarCard from "@/components/JarCard";
+import JarCard from "./components/JarCard";
 import {Box, CircularProgress, Stack} from "@mui/material";
 import {FC, useEffect, useMemo} from "react";
 import type {JarsPropsFromRedux} from "@/components/Jars/index.ts";
@@ -18,15 +18,16 @@ const Jars: FC<JarsProps> = ({userData, userDataError, userDataLoading}) => {
     }, [userData])
 
     return (
-        <Box p={1} sx={{minHeight: "316px"}}>
+        <Box p={2} sx={{minHeight: "316px"}}>
             {
                 userDataLoading ?
                     <Stack justifyContent={"center"} alignItems={"center"}>
                         <CircularProgress color="inherit" size={40}/>
                     </Stack>
-
                     :
-                    JarsList
+                    <Stack direction={"column"} spacing={2}>
+                        {JarsList}
+                    </Stack>
             }
         </Box>
     )

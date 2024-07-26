@@ -8,7 +8,10 @@ const initialState: BankStore = {
     currencyRateError: "",
     userData: undefined,
     userDataLoading: false,
-    userDataError: ""
+    userDataError: "",
+    transactions:[],
+    transactionsLoading: false,
+    transactionsError: "",
 }
 
 const bankSlice = createSlice({
@@ -21,7 +24,7 @@ const bankSlice = createSlice({
         });
         builder.addCase(currencyRateFetch.rejected, (state, {payload}) => {
             state.currencyRateLoading = false;
-            state.currencyRateError = payload;
+            state.currencyRateError = payload as string;
         })
         builder.addCase(currencyRateFetch.fulfilled, (state, {payload}) => {
             state.currencyRateLoading = false;
@@ -37,8 +40,8 @@ const bankSlice = createSlice({
             state.userDataError = "";
         })
         builder.addCase(userInfoFetch.rejected, (state, {payload})=>{
-            state.currencyRateLoading = false;
-            state.userDataError = payload
+            state.userDataLoading = false;
+            state.userDataError = payload as string
         })
     }
 })
