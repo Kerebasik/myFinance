@@ -33,7 +33,7 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
     networks:
       dev_net:
-    command: yarn run dev
+    command: yarn run start:dev
 
   redis:
     image: redis
