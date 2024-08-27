@@ -1,16 +1,14 @@
 import "./reset.css"
 import "./App.css"
-import Header from "@/components/Header";
-import Content from "@/components/Content";
 import {useInitialStore} from "@/hooks/useInitialStore.ts";
+import {router} from "@/router/router.tsx";
+import {RouterProvider} from "react-router-dom";
 
 function App() {
     useInitialStore()
-
     return (
         <>
-            <Header/>
-            <Content/>
+            <RouterProvider router={router}/>
         </>
     )
 }

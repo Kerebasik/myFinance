@@ -1,6 +1,18 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {currencyRateFetch, userInfoFetch} from "@/store/bankStore/actions.ts";
-import {BankStore} from "@/types/redux/bankStore.ts";
+import {currencyRateFetch, userInfoFetch, userTransactionsFetch} from "@/store/bankStore/actions.ts";
+import {CurrencyRate, UserInfo, UserTransaction} from "@/types/bank.ts";
+
+type BankStore = {
+    currencyRate: Array<CurrencyRate>,
+    currencyRateLoading: boolean,
+    currencyRateError: string,
+    userData: UserInfo | undefined,
+    userDataLoading: boolean,
+    userDataError: string,
+    transactions: Array<UserTransaction>,
+    transactionsLoading: boolean
+    transactionsError: string
+}
 
 const initialState: BankStore = {
     currencyRate: [],
@@ -20,7 +32,7 @@ const bankSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(currencyRateFetch.pending, (state) => {
-            state.currencyRateLoading = true
+            state.currencyRateLoading = true;
         });
         builder.addCase(currencyRateFetch.rejected, (state, {payload}) => {
             state.currencyRateLoading = false;
@@ -41,7 +53,18 @@ const bankSlice = createSlice({
         })
         builder.addCase(userInfoFetch.rejected, (state, {payload})=>{
             state.userDataLoading = false;
-            state.userDataError = payload as string
+            state.userDataError = payload as string;
+        })
+        builder.addCase(userTransactionsFetch.pending, (state)=>{
+            state.transactionsLoading = true;
+        })
+        builder.addCase(userTransactionsFetch.fulfilled, (state, {payload})=>{
+            state.transactions = payload;
+            state.transactionsLoading = false;
+        })
+        builder.addCase(userTransactionsFetch.rejected, (state, {payload})=>{
+            state.transactionsError = payload as string;
+            state.transactionsLoading = false;
         })
     }
 })

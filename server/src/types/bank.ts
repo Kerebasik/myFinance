@@ -53,5 +53,8 @@ type UserTransaction = {
     receiptId: string
 }
 
+type UserTransactionsFilter = {
+    sendId:string
+}
 
-export type {CurrencyRate, UserInfo, UserCard, UserJar, UserTransaction}
+export type {CurrencyRate, UserInfo, UserCard, UserJar, UserTransaction, UserTransactionsFilter}

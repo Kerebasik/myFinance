@@ -9,7 +9,7 @@ const BankTransactions = () => {
     const [showCharts, setShowCharts] = useState<boolean>(true)
 
     return (
-        <Box display={"flex"} flexDirection={"column"} justifyContent={"space-between"} sx={{p:1, height: "90vh"}}>
+        <Box display={"flex"} flexDirection={"column"} justifyContent={"space-between"} sx={{p:1}}>
             <Box flex={"1 1"}>
                 <Box display={"flex"} flexDirection={"row"} justifyContent={"end"} sx={{pb: 1}}>
                     <RangeDatePicker/>

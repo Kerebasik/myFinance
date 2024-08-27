@@ -740,22 +740,7 @@
     d3-shape "^3.2.0"
     prop-types "^15.8.1"
 
-"@mui/x-date-pickers-pro@^7.11.0":
-  version "7.11.0"
-  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers-pro/-/x-date-pickers-pro-7.11.0.tgz#3570b9c9d8a5cadd01db23539cbd130dab1ea311"
-  integrity sha512-qCHsoNoFgldGxlJE77vL18lhbV7Qg15UFkqCQWV8KbUd5PLrK1kaIf2ddMwLGKJKl4sxSU6rgH/yat95HDdggA==
-  dependencies:
-    "@babel/runtime" "^7.24.8"
-    "@mui/base" "^5.0.0-beta.40"
-    "@mui/system" "^5.16.2"
-    "@mui/utils" "^5.16.2"
-    "@mui/x-date-pickers" "7.11.0"
-    "@mui/x-license" "7.11.0"
-    clsx "^2.1.1"
-    prop-types "^15.8.1"
-    react-transition-group "^4.4.5"
-
-"@mui/x-date-pickers@7.11.0", "@mui/x-date-pickers@^7.11.0":
+"@mui/x-date-pickers@^7.11.0":
   version "7.11.0"
   resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-7.11.0.tgz#ac98d9057b733ddec117bc0938f364316eb12b5a"
   integrity sha512-+zPWs1dwe7J1nZ2iFhTgCae31BLMYMQ2VtQfHxx21Dh6gbBRy/U7YJZg1LdhfQyE093S3e4A5uMZ6PUWdne7iA==
@@ -768,14 +753,6 @@
     clsx "^2.1.1"
     prop-types "^15.8.1"
     react-transition-group "^4.4.5"
-
-"@mui/x-license@7.11.0":
-  version "7.11.0"
-  resolved "https://registry.yarnpkg.com/@mui/x-license/-/x-license-7.11.0.tgz#b7566dbb58af40c3b2725c5374124e15663b1362"
-  integrity sha512-4YOfiJ2CDque+nP4MNFU6eNiw2bf9rFGZtN9s0XRWXIaIoLKXICWcMx/PjYpqtLdSGG8eFe+EINX0oxiWC9XSg==
-  dependencies:
-    "@babel/runtime" "^7.24.8"
-    "@mui/utils" "^5.16.2"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -856,6 +833,11 @@
     redux "^5.0.1"
     redux-thunk "^3.1.0"
     reselect "^5.1.0"
+
+"@remix-run/router@1.19.0":
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.19.0.tgz#745dbffbce67f05386d57ca22c51dfd85c979593"
+  integrity sha512-zDICCLKEwbVYTS6TjYaWtHXxkdoUvD/QXvyVZjGCsWz5vyH7aFeONlPffPdW+Y/t6KT0MgXb2Mfjun9YpWN1dA==
 
 "@rollup/rollup-android-arm-eabi@4.18.0":
   version "4.18.0"
@@ -2263,6 +2245,21 @@ react-refresh@^0.14.2:
   version "0.14.2"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.14.2.tgz#3833da01ce32da470f1f936b9d477da5c7028bf9"
   integrity sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==
+
+react-router-dom@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.26.0.tgz#8debe13295c58605c04f93018d659a763245e58c"
+  integrity sha512-RRGUIiDtLrkX3uYcFiCIxKFWMcWQGMojpYZfcstc63A1+sSnVgILGIm9gNUA6na3Fm1QuPGSBQH2EMbAZOnMsQ==
+  dependencies:
+    "@remix-run/router" "1.19.0"
+    react-router "6.26.0"
+
+react-router@6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.26.0.tgz#d5af4c46835b202348ef2b7ddacd32a2db539fde"
+  integrity sha512-wVQq0/iFYd3iZ9H2l3N3k4PL8EEHcb0XlU2Na8nEwmiXgIUElEH6gaJDtUQxJ+JFzmIXaQjfdpcGWaM6IoQGxg==
+  dependencies:
+    "@remix-run/router" "1.19.0"
 
 react-toastify@^10.0.5:
   version "10.0.5"

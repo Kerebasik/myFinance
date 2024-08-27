@@ -1,4 +1,4 @@
-type CurrencyRate =  {
+type CurrencyRate = {
     currencyCodeA: number,
     currencyCodeB: number,
     date: number,
@@ -37,6 +37,12 @@ type UserInfo = {
     jars: [UserJar]
 }
 
+type TransactionFilter = {
+    sendId: string,
+    from: string,
+    to: string,
+}
+
 type UserTransaction = {
     id: string,
     time: number,
@@ -54,4 +60,4 @@ type UserTransaction = {
 }
 
 
-export type {CurrencyRate, UserInfo, UserCard, UserJar, UserTransaction}
+export type {CurrencyRate, UserInfo, UserCard, UserJar, UserTransaction, TransactionFilter}

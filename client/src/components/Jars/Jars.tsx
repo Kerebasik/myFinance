@@ -25,7 +25,7 @@ const Jars: FC<JarsProps> = ({userData, userDataError, userDataLoading}) => {
                         <CircularProgress color="inherit" size={40}/>
                     </Stack>
                     :
-                    <Stack direction={"column"} spacing={2}>
+                    <Stack direction={"column"}>
                         {JarsList}
                     </Stack>
             }

@@ -13,12 +13,28 @@
 
 /* Links */
 
-a, a:link, a:visited  {
-    text-decoration: none;
+a, a {
+    color: inherit; /* Использовать цвет текста родительского элемента */
+    text-decoration: none; /* Убрать подчеркивание */
+    font: inherit; /* Использовать тот же шрифт, что и у родительского элемента */
+    background: none; /* Убрать фоновый цвет */
+    border: none; /* Убрать границу */
+    padding: 0; /* Убрать отступы */
+    margin: 0; /* Убрать внешние отступы */
+    outline: none; /* Убрать контур при фокусе */
+    display: inline; /* Сбросить блочный режим, если был установлен */
 }
 
-a:hover  {
-    text-decoration: none;
+a:visited {
+    color: inherit; /* Убрать стиль посещенных ссылок */
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: inherit; /* Убрать цвет при наведении, активном состоянии и фокусе */
+    text-decoration: none; /* Убрать подчеркивание при наведении, активном состоянии и фокусе */
+    outline: none; /* Убрать контур при наведении, активном состоянии и фокусе */
 }
 
 /* Common */

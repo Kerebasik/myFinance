@@ -1,9 +1,10 @@
 import {Router} from "express";
-import * as BankControllers from "../controllers/BankControllers";
+import BankController from "../controllers/bank-controller";
 
-const bankRouter:Router = Router()
+const bankRouter = Router()
 
-bankRouter.get("/currency-rate", BankControllers.CurrencyRate)
-bankRouter.get("/user-info", BankControllers.UserInfo)
+bankRouter.get("/currency-rate", BankController.currencyRate)
+bankRouter.get("/user-info", BankController.UserInfo)
+bankRouter.post("/user-transactions", BankController.UserTransactions)
 
 export {bankRouter}
