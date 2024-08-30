@@ -27,11 +27,3 @@ export const userInfoFetch = createAsyncThunk("bank/userInfo", async (_, thunkAP
         return thunkAPI.rejectWithValue(axiosError.response?.data?.message);
     }
 })
-
-export const userTransactionsFetch = createAsyncThunk("bank/userTransactions", async (_, thunkAPI) => {
-    try {
-
-    } catch (e) {
-
-    }
-})

@@ -11,7 +11,7 @@ COPY . .
 
 EXPOSE 5000
 
-CMD [ "yarn", "run", "dev" ]
+CMD [ "yarn", "run", "start:dev" ]
 
 
 FROM node:22-alpine as prod
@@ -25,8 +25,6 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn run build
-
 EXPOSE 5000
 
-CMD [ "yarn", "run", "start" ]
+CMD [ "yarn", "run", "start:prod" ]
