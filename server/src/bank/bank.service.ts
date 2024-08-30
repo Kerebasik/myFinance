@@ -25,17 +25,17 @@ export class BankService {
     })
   }
 
-  async getCurrencyRate() {
+  async getCurrencyRate():Promise<[CurrencyRate]> {
     const {data: currencyRates} = await this.nbuAxiosInstance.get<[CurrencyRate]>("/exchange?json");
     return currencyRates
   }
 
-  async getUserInfo() {
+  async getUserInfo():Promise<UserInfo> {
     const {data: userInfo} = await this.monoAxiosInstance.get<UserInfo>("/personal/client-info")
     return userInfo
   }
 
-  async getUserTransactions(sendId: string) {
+  async getUserTransactions(sendId: string):Promise<[UserTransaction]> {
     const date = dayjs().tz("Europe/Kiev").unix();
     const [from, to] = [
       date - 2678400,

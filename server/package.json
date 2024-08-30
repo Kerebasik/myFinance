@@ -12,8 +12,10 @@
     "@nestjs/schematics": "^10.1.4",
     "@types/node": "^22.5.0",
     "axios": "^1.7.5",
+    "bignumber.js": "^9.1.2",
     "dayjs": "^1.11.13",
-    "reflect-metadata": "0.1"
+    "reflect-metadata": "0.1",
+    "web3": "^4.12.1"
   },
   "scripts": {
     "build": "nest build",

@@ -4,21 +4,23 @@ import {UserTransactionDto} from "./dtos/request";
 
 @Controller("bank")
 export class BankController {
-    constructor(private bankService: BankService) {}
+  constructor(private bankService: BankService) {}
 
     @Get("currency-rate")
     async getCurrencyRate() {
-      return this.bankService.getCurrencyRate()
+      return await this.bankService.getCurrencyRate()
     }
 
-    @Get("user-info")
-    async getUserInfo() {
-      return this.bankService.getUserInfo()
-    }
 
-    @Post("user-transactions")
-    async getUserTransactions(@Body() body: UserTransactionDto) {
-      const {sendId} = body;
-      return this.bankService.getUserTransactions(sendId)
-    }
+  @Get("user-info")
+  async getUserInfo() {
+    return await this.bankService.getUserInfo()
+  }
+
+
+  @Post("user-transactions")
+  async getUserTransactions(@Body() body: UserTransactionDto) {
+    const {sendId} = body;
+    return await this.bankService.getUserTransactions(sendId)
+  }
 }
