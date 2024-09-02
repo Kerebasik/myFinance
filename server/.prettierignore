@@ -1,0 +1,12 @@
+# Ignore artifacts:
+yarn.lock
+tsconfig.json
+tsconfig.build.json
+package.json
+nest-cli.json
+Dockerfile
+.prettierrc
+.prettierignore
+.gitignore
+node_modules
+

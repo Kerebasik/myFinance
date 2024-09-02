@@ -19,7 +19,12 @@
   },
   "scripts": {
     "build": "nest build",
+    "format:check": "yarn prettier . --check",
+    "format:write": "yarn prettier . --write",
     "start:dev": "nest start --watch",
     "start:prod": "node ."
+  },
+  "devDependencies": {
+    "prettier": "3.3.3"
   }
 }

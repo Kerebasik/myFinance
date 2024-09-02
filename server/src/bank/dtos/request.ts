@@ -1,5 +1,5 @@
 class UserTransactionDto {
-  sendId: string
+	sendId: string;
 }
 
-export {UserTransactionDto}
+export { UserTransactionDto };
