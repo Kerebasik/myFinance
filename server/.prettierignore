@@ -9,4 +9,5 @@ Dockerfile
 .prettierignore
 .gitignore
 node_modules
+prisma
 

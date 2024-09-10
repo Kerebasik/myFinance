@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { Web3 } from 'web3';
-import BigNumber from 'bignumber.js';
+import { BlockChainService } from '../modules/block-chain.service';
+import { DbUserCryptoWalletsService } from '../modules/db-user-crypto-wallets.service';
+import { Balance } from './crypto.types';
 
 @Injectable()
 export class CryptoService {
-	private web3: Web3;
-	constructor() {
-		this.web3 = new Web3('https://eth.llamarpc.com');
-	}
+	constructor(
+		private blockCainService: BlockChainService,
+		private dbUserCryptoWalletsService: DbUserCryptoWalletsService,
+	) {}
 
-	async getBalance(address: string): Promise<number> {
-		const balance = await this.web3.eth.getBalance(address);
-		const formatedBalance = new BigNumber(balance.toString()).dividedBy(new BigNumber(10).pow(18)).toNumber();
-		return formatedBalance;
+	async getBalance(): Promise<Array<Balance>> {
+		const address = await this.dbUserCryptoWalletsService.addresses({});
+		return await this.blockCainService.getBalance(address);
 	}
 }
