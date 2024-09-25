@@ -18,7 +18,6 @@ services:
 #      dev_net:
 
   server:
-    container_name: "myFinance-server"
     restart: always
     env_file: ".env"
     build:
@@ -43,7 +42,8 @@ services:
     ports:
       - 5432:5432
     networks:
-      - postgres-db-network
+      postgres-db-network:
+      dev_net:
 
   pgadmin:
     image: dpage/pgadmin4
@@ -55,7 +55,7 @@ services:
     ports:
       - "16543:80"
     networks:
-      - postgres-db-network
+      postgres-db-network:
 
 #  redis:
 #    image: redis

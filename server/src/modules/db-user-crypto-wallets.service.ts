@@ -14,4 +14,10 @@ export class DbUserCryptoWalletsService {
 	async create(address: string, currency: string): Promise<Wallets> {
 		return this.prisma.wallets.create({ data: { address, currency } });
 	}
+
+  async deleteUser(where: Prisma.WalletsWhereUniqueInput): Promise<Wallets> {
+    return this.prisma.wallets.delete({
+      where,
+    });
+  }
 }

@@ -23,7 +23,8 @@
     "format:check": "yarn prettier . --check",
     "format:write": "yarn prettier . --write",
     "start:dev": "nest start --watch",
-    "start:prod": "node ."
+    "start:prod": "node .",
+    "generate": "prisma generate"
   },
   "devDependencies": {
     "prettier": "3.3.3",

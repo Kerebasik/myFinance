@@ -5,7 +5,10 @@ import { Balance, Wallet } from '../crypto/crypto.types';
 
 @Injectable()
 export class BlockChainService {
-	constructor(private web3 = new Web3('https://eth.llamarpc.com')) {}
+  private web3: Web3;
+	constructor() {
+    this.web3 = new Web3('https://eth.llamarpc.com');
+  }
 
 	async getBalance(addresses: Array<Wallet> = []) {
 		const balances: Array<Balance> = [];

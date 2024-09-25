@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { BankService } from './bank.service';
-import { UserTransactionDto } from './dtos/request';
+import { UserTransactionDto } from './dtos/requests';
 import { CurrencyRate, UserInfo, UserTransaction } from '../types/bank';
 
 @Controller('bank')
