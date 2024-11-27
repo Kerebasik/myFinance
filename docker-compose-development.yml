@@ -18,10 +18,7 @@ services:
 #      dev_net:
 
   server:
-    container_name: "myFinance-server"
     restart: always
-    depends_on:
-      - redis
     env_file: ".env"
     build:
       context: ./server
@@ -33,24 +30,57 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
     networks:
       dev_net:
-    command: yarn run dev
+    command: yarn run start:dev
 
-  redis:
-    image: redis
-    container_name: "redis"
-    env_file: ".env"
-    restart: always
-    ports:
-      - ${REDIS_PORT}:${REDIS_PORT}
-    command: redis-server --requirepass ${REDIS_PASSWORD}
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
     volumes:
-      - redis_cache:/data
+      - postgres-db-volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
     networks:
+      postgres-db-network:
       dev_net:
 
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'teste@teste.com'
+      PGADMIN_DEFAULT_PASSWORD: 'teste'
+    ports:
+      - "16543:80"
+    networks:
+      postgres-db-network:
+
+#  redis:
+#    image: redis
+#    container_name: "redis"
+#    env_file: ".env"
+#    restart: always
+#    ports:
+#      - ${REDIS_PORT}:${REDIS_PORT}
+#    command: redis-server --requirepass ${REDIS_PASSWORD}
+#    volumes:
+#      - redis_cache:/data
+#    networks:
+#      dev_net:
+
 volumes:
-  redis_cache:
+  postgres-db-volume:
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data
+#  redis_cache:
+#    driver: local
 
 networks:
   dev_net:
+  postgres-db-network:
+    driver: bridge
